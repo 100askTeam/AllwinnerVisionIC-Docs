@@ -8,20 +8,20 @@ import {themes as prismThemes} from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: '东山Π',
-  tagline: 'DshanPI Rockchip Boards Docs.',
+  title: '全志Vision',
+  tagline: 'Allwinner Vision Boards Docs.',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://rockchip.100ask.net',
+  url: 'https://docs.100ask.net',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
+  baseUrl: '/AllwinnerVisionIC-Docs/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: '100askTeam', // Usually your GitHub org/user name.
-  projectName: 'rockchip-docs', // Usually your repo name.
+  projectName: 'AllwinnerVisionIC-Docs', // Usually your repo name.
 
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
@@ -68,7 +68,7 @@ const config = {
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
       navbar: {
-        title: 'rockchip >',
+        title: '全志Vision',
         logo: {
           alt: '东山PI',
           src: 'img/logo.svg',
@@ -91,10 +91,11 @@ const config = {
             position: 'right',
           },
           {
-            href: 'https://github.com/100askTeam/rockchip-docs',
+            href: 'https://github.com/100askTeam/AllwinnerVisionIC-Docs',
             label: 'GitHub',
             position: 'right',
           },
+          
         ],
       },
       footer: {
