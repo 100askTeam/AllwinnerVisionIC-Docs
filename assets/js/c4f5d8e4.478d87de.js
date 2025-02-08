@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmy_website=self.webpackChunkmy_website||[]).push([[4195],{2841:(e,s,t)=>{t.r(s),t.d(s,{default:()=>c});t(7294);var d=t(6550),u=t(5893);function c(){return(0,u.jsx)(d.l_,{to:"docs/EmbeddedAIBasics/BoardIntroduction"})}}}]);
