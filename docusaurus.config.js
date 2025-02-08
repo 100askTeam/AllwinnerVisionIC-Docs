@@ -88,13 +88,19 @@ const config = {
             type: 'docSidebar',
             sidebarId: 'v853Sidebar',
             position: 'left',
-            label: 'V853',
+            label: 'V853-AICT',
           },
           {
             type: 'docSidebar',
             sidebarId: 'v851seSidebar',
             position: 'left',
             label: 'V851se-TinyVision',
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'v851SSidebar',
+            position: 'left',
+            label: 'V851s-Lizard',
           },
           {
             type: 'localeDropdown',

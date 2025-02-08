@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 ---
 # 安装并配置开发环境
 
@@ -82,4 +82,4 @@ sudo apt install open-vm-tools-desktop
 
 ![ConfigHost_008](https://photos.100ask.net/dongshanpi-docs/DongshanNezhaSTU/ConfigHost_008.png)
 
-做完这一步以后，就可以继续往下，获取源码 开始 V853-AICT 开发板的开发之旅了。
+做完这一步以后，就可以继续往下，获取源码 开始 V851s-Lizard 开发板的开发之旅了。
