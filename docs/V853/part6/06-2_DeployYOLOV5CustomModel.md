@@ -59,12 +59,7 @@ sidebar_position: 2
 
 ![LabelImg-changelabelDir](images/LabelImg-changelabelDir.gif)
 
-下面我演示标注过程，以百问网的开发板为例，标注三块开发板
-
-![LabelImg-LabelingProcess](images/LabelImg-LabelingProcess.gif)
-
-当你点击Save后即表示标注完成，标注完成后后会在`labels`目录下生成`classes.txt`（类别）和图像中标注的类别即位置信息。
-
+标注完成后后会在`labels`目录下生成`classes.txt`（类别）和图像中标注的类别即位置信息。
 
 
 下面为LabelImg[快捷键目录](https://github.com/heartexlabs/labelImg)：
