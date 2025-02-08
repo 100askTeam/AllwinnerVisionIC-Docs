@@ -89,7 +89,13 @@ const config = {
             sidebarId: 'v853Sidebar',
             position: 'left',
             label: 'V853',
-          },     
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'v851seSidebar',
+            position: 'left',
+            label: 'V851se-TinyVision',
+          },
           {
             type: 'localeDropdown',
             position: 'right',
