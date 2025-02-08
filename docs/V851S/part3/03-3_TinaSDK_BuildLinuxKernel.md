@@ -1,8 +1,9 @@
 ---
 sidebar_position: 3
 ---
-# 使用Tina-SDK编译打包Linux Kernel
-### 编译各个部分
+# 编译打包Linux Kernel
+
+## 编译各个部分
 
 * 修改内核配置
 ``` shell

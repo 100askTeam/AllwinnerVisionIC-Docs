@@ -1,7 +1,7 @@
 ---
 sidebar_position: 1
 ---
-# 使用Tina-SDK编译构建系统
+# 编译构建系统
 
 ## 简介
 
@@ -153,7 +153,7 @@ book@100ask:~/tina-v853$ pack
 ### 烧写spi nand 最小系统镜像
 
 编译完成后会在tina-v853/out/v851s/lizard/openwrt/目录下输出 v851s_linux_lizard_uart0.img 文件，将文件拷贝到Windows系统下使用 使用 全志官方的  AllwinnertechPhoeniSuit 进行烧写。
-详细烧写步骤请，请参考左侧 [快速启动](https://dongshanpi.com/DongshanNezhaSTU/03-QuickStart/#spi-nand) 页面。
+详细烧写步骤请，请参考左侧 [快速启动](/docs/V851S/part1/QuickStart) 页面。
 
 
 

@@ -1,7 +1,7 @@
 ---
 sidebar_position: 7
 ---
-# 使用Tina-SDK支持MIPI摄像头
+# 支持MIPI摄像头
 
 使用Tina-SDK生成的镜像已经默认装载了GC2053的MIPI摄像头驱动，可以通过如下命令查看
 

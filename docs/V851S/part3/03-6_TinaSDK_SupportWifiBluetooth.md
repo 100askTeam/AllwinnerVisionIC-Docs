@@ -1,7 +1,7 @@
 ---
 sidebar_position: 6
 ---
-# 使用Tina-SDK支持启动WiFi
+# 支持启动WiFi
 
 ## Wifi配网
 

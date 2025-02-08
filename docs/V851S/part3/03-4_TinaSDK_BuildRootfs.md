@@ -1,7 +1,7 @@
 ---
 sidebar_position: 4
 ---
-# 使用buildroot-SDK编译构建rootfs
+# 编译构建rootfs
 
 Tina默认情况是编译打包完成在tina-v853/out/v851s-perf1会生成对应的rootfs.img
 

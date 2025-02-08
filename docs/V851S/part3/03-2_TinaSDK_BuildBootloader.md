@@ -1,7 +1,7 @@
 ---
 sidebar_position: 2
 ---
-# 使用Tina-SDK编译构建Bootloader
+# 编译构建Bootloader
 
 * 柚木PI-蜥蜴开发板，Bootloader由4部分组成， 第一部分是 boot0 阶段，用于初始化CPU DDR UART 时钟等一些必要外设和引脚分配，之后进入第二部分，第二部分是 optee  uboot  board.dtb 这三部分组成，为一个 boot_package.fex 文件。
 * 所以Bootloader的整体的启动流程是，boot0-->optee-->u-boot-->board.dtb。
