@@ -5,6 +5,8 @@
 // See: https://docusaurus.io/docs/api/docusaurus-config
 
 import {themes as prismThemes} from 'prism-react-renderer';
+const remarkMath = require('remark-math');
+const rehypeKatex = require('rehype-katex');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -40,11 +42,13 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
+          remarkPlugins: [remarkMath],
+          rehypePlugins: [rehypeKatex],
           sidebarPath: './sidebars.js',
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/100askTeam/linuxboard-docs/tree/main/',
+            'https://github.com/100askTeam/AllwinnerVisionIC-Docs/tree/main/',
           
           sidebarCollapsed: false,
         },
@@ -53,7 +57,7 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/100askTeam/linuxboard-docs/tree/main/',
+            'https://github.com/100askTeam/AllwinnerVisionIC-Docs/tree/main/',
         },
         theme: {
           customCss: './src/css/custom.css',
@@ -76,16 +80,16 @@ const config = {
         items: [         
           {
             type: 'docSidebar',
-            sidebarId: 'rockchipsbcSidebar',
+            sidebarId: 'aibasicsSidebar',
             position: 'left',
-            label: 'Rockchip SBC 介绍',
+            label: '嵌入式AI基础',
           },
           {
             type: 'docSidebar',
-            sidebarId: 'rk3568Sidebar',
+            sidebarId: 'v853Sidebar',
             position: 'left',
-            label: '100ASK-RK3568 开发文档',
-          },        
+            label: 'V853',
+          },     
           {
             type: 'localeDropdown',
             position: 'right',
