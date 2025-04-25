@@ -25,8 +25,8 @@ const config = {
   organizationName: '100askTeam', // Usually your GitHub org/user name.
   projectName: 'AllwinnerVisionIC-Docs', // Usually your repo name.
 
-  onBrokenLinks: 'warn',
-  onBrokenMarkdownLinks: 'warn',
+  onBrokenLinks: 'ignore',
+  onBrokenMarkdownLinks: 'ignore',
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
@@ -101,6 +101,12 @@ const config = {
             sidebarId: 'v851SSidebar',
             position: 'left',
             label: 'V851s-Lizard',
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'v821Sidebar',
+            position: 'left',
+            label: 'V821-AvaotaF1',
           },
           {
             type: 'localeDropdown',

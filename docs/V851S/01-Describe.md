@@ -19,7 +19,7 @@ sidebar_position: 1
 - Wireless: 支持2.4GHz WIFI无线网络协议，以及标准蓝牙及低功耗蓝牙协议。
 - Other: GPIO支持2路IIC，一路SPI，一路uart，三路PWM
 
-![YuzukiHD-Lizard-sketch_map_v851s](images/68747470733a2f2f70686f746f732e31303061736b2e6e65742f646f6e677368616e70692d646f63732f59757a756b6948442d4c697a6172642f59757a756b6948442d4c697a6172642d736b657463685f6d61705f76383531732e706e67.png)
+![YuzukiHD-Lizard-sketch_map_v851s](images/1.png)
 
 V851S拥有全新一代高性能的ISP图像处理模块及视频编码器，具备较高的编码质量、较低的编码码率和行业主流水准的图像处理能力。同时，该芯片内部集成了64MBDDR2存储器，拥有完备的应用所需外设接口，包括USB，SDIO和Ethernet等，可适用于多种网络摄像机产品。
 
@@ -27,11 +27,11 @@ V851S拥有全新一代高性能的ISP图像处理模块及视频编码器，具
 
 ### 芯片架构框图
 
-![YuzukiHD-Lizard-Chip_block_diagram](images/68747470733a2f2f70686f746f732e31303061736b2e6e65742f646f6e677368616e70692d646f63732f59757a756b6948442d4c697a6172642f59757a756b6948442d4c697a6172642d436869705f626c6f636b5f6469616772616d2e706e67.png)
+![YuzukiHD-Lizard-Chip_block_diagram](images/2.png)
 
 ### 芯片应用框图
 
-![YuzukiHD-Lizard-Application_scenario](images/68747470733a2f2f70686f746f732e31303061736b2e6e65742f646f6e677368616e70692d646f63732f59757a756b6948442d4c697a6172642f59757a756b6948442d4c697a6172642d4170706c69636174696f6e5f7363656e6172696f2e706e67.png)
+![YuzukiHD-Lizard-Application_scenario](images/3.png)
 
 ## 支持的扩展模块
 
