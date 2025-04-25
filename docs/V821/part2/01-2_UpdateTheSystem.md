@@ -1,7 +1,7 @@
 ---
 sidebar_position: 2
 ---
-# SDK 固件编译
+# SDK固件编译
 
 本章节主要介绍获取V821 SDK后，如何编译SDK，以及编译SDK中的单个组件。如果您已拿到V821的开发板，想快速进入Demo演示和体验，可先跳过本章节，进入到 [SDK固件烧录](https://docs.aw-ol.com/docs/soc/v821/software/flash_img)章节。
 

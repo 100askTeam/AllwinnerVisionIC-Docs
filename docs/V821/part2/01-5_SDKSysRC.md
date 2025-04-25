@@ -1,7 +1,7 @@
 ---
 sidebar_position: 5
 ---
-# SDK 系统资源配置
+# SDK系统资源配置
 
 ## 内存划分与调整
 

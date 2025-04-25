@@ -1,24 +1,24 @@
 ---
 sidebar_position: 1
 ---
-# 快速开始使用
+# 核心板快速上手指南
 
 ## 串口调试
 
-核心板支持接出两路调试串口，分别为 RISC-V CPU Linux 核心串口 UART0，RISC-V MCU RTOS 核心串口 UART3，波特率均为 115200
+核心板支持接出两路调试串口，分别为 RISC-V CPU Linux 核心串口 UART0，RISC-V MCU RTOS 核心串口 UART3，波特率均为 115200。
 
 核心板调试串口有两种接入方式：
 
-- 使用 USB 拆分器接入串口：仅接出常用的 CPU 核心串口 UART0
-- 使用 GPIO 接入串口：支持接出 CPU 核心串口 UART0 和 MCU 核心串口 UART3
+- 使用 USB 拆分器接入串口：仅接出常用的 CPU 核心串口 UART0。
+- 使用 GPIO 接入串口：支持接出 CPU 核心串口 UART0 和 MCU 核心串口 UART3。
 
-**使用 USB 拆分器接入串口**
+### 使用 USB 拆分器接入串口
 
 核心板设计之时复用了 TypeC 中的 SBU 信号线用于传输串口信号，这个串口是 UART0，与 PL4，PL5 并联。接入方法如下：
 
 ![image-20250424091735539](images/image-20250424091735539-5205349f7060993af0ea44c34fb32b56.png)
 
-**使用 GPIO 接入串口**
+### 使用 GPIO 接入串口
 
 核心板串口位于 PL 口，如下图所示，需要焊接或者排针接出。其中绿色的是 RISC-V MCU 核心串口，蓝色的是 RISC-V CPU 串口。
 
@@ -114,9 +114,9 @@ reboot efex
 
 在 Linux 命令行中输入 `echo 000000 > /dev/mtd0`，破坏启动引导介质，重启后即可进入烧录模式
 
-## WI-FI
+## WI-FI功能
 
-**Wi-Fi 连接网络**
+### Wi-Fi 连接网络
 
 这里首先介绍如何使用 `wifi` 扫描网络：
 
@@ -165,7 +165,7 @@ PING 202.108.22.5 (202.108.22.5): 56 data bytes
 wifi -d
 ```
 
-**Wi-Fi 建立 AP**
+### Wi-Fi 建立 AP
 
 （1）创建热点 （SSID：v821，密码 12345678）
 
@@ -183,7 +183,7 @@ wifi -o ap v821 12345678
 
 ## 音频 MIC
 
-**查看音频设备**
+### 查看音频设备
 
 使用命令 `amixer` 可以列出全部音频设备
 
@@ -273,7 +273,7 @@ Simple mixer control 'tx hub mode',0
   Item0: 'Off'
 ```
 
-**查看录音设备**
+### 查看录音设备
 
 可以使用 `arecord -l` 命令查看核心板提供的录音设备。
 
@@ -283,7 +283,7 @@ arecord -l
 
 ![image-20241119162200635](images/image-20241119162200635-174157386274222-eaa478f0eaf5e1350fae8dc67c140a8c-eaa478f0eaf5e1350fae8dc67c140a8c.png)
 
-**麦克风录音**
+### 麦克风录音
 
 V821 核心板板载一个麦克风，在录音之前，首先需要打开音频通路，配置内部 MIC0录制音频（需要 SDK 配置 `alsa-utils` 软件包才能直线 `amixer` 等命令）。
 

@@ -1,7 +1,7 @@
 ---
 sidebar_position: 1
 ---
-# SDK 框架介绍
+# SDK框架与目录结构
 
 Tina Linux 是全志科技基于Linux内核开发的针对智能硬件类产品的嵌入式软件系统。
 

@@ -1,7 +1,7 @@
 ---
 sidebar_position: 6
 ---
-# SDK 一键配置命令
+# SDK一键配置命令
 
 V821 SDK提供 `quick_config` 功能，执行对应命令，可快速一键修改该功能相关的所有配置项。
 
