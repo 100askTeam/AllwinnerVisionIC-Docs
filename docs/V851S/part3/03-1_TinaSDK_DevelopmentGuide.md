@@ -36,7 +36,6 @@ book@100ask:~$ cp -rfvd  Yuzukilizard-v851s-TinaSDK/* tina-v853-open/
 ```
 
 
-
 ## 安装必要依赖包
 
 ### ubuntu-18.04
@@ -51,13 +50,44 @@ book@100ask:~$ cp -rfvd  Yuzukilizard-v851s-TinaSDK/* tina-v853-open/
 
 
 
-
 ## 最小系统编译烧写
 
 ### 编译spi nand最小系统镜像
 
+
+```bash
+book@100ask:~/tina-v853$ source build/envsetup.sh  #设置环境变量
+book@100ask:~/tina-v853-open$ ./build.sh config #配置选择单板
+========ACTION List: mk_config ;========
+options :
+All available platform:
+   0. android
+   1. linux
+Choice [linux]: 1 #选择平台Linux
+All available linux_dev:
+   0. bsp
+   1. buildroot
+   2. tinyos
+   3. openwrt
+Choice [openwrt]: 3 #选择文件系统openwrt
+All available ic:
+   0. v851s
+   1. v853
+Choice [v851s]: 0 #选择芯片v851s
+All available board:
+   0. lizard
+Choice [lizard]: 0 #选择单板方案lizard
+All available flash:
+   0. default
+   1. nor
+Choice [default]: 0 #选择存储类型默认
+INFO: Prepare toolchain ...
+book@100ask:~/tina-v853-open$ ./build.sh #开始编译
+book@100ask:~/tina-v853-open$ ./build.sh pack #编译后打包
+```
 ```bash
 book@100ask:~/tina-v853$ source build/envsetup.sh 
+book@100ask:~/tina-v853$ lunch
 
 You're building on Linux
 

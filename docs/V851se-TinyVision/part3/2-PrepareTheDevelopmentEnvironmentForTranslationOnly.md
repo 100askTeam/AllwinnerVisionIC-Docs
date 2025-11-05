@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # 准备开发环境
 
-首先准备一台 Ubuntu 20.04 / Ubuntu 18.04 / Ubuntu 16.04 / Ubuntu 14.04 的虚拟机或实体机，其他系统没有测试过出 BUG 不管。
+首先准备一台Ubuntu 18.04 的虚拟机或实体机，其他系统没有测试过出 BUG 不管。
 
 更新系统，安装基础软件包
 
@@ -22,3 +22,7 @@ sudo apt-get update
 sudo apt install gcc-multilib 
 sudo apt install libc6:i386 libstdc++6:i386 lib32z1
 ```
+
+后续编译镜像会涉及到OPENCV源码多线程编译，请配置虚拟机内存至少为16GB，处理器核心至少8个，否则会出现编译中断等错误。
+
+![image-20251105151915563](2-PrepareTheDevelopmentEnvironmentForTranslationOnly.assets/image-20251105151915563.png)

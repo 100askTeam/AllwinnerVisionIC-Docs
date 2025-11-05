@@ -67,3 +67,26 @@ repo sync
 ```bash
 repo start devboard-v853-tina-for-awol --all
 ```
+
+## 使用网盘SDK
+
+
+通过网盘分享的文件：tina-v85x-open-SDK 链接: https://pan.baidu.com/s/1-5LZj7my46EKz3aER54Z8g?pwd=yyxw 提取码: yyxw 
+
+![image-20251105150805037](3-DownloadTheAWOLTinaLinuxBSP.assets/image-20251105150805037.png)
+
+下载到本地后，通过ssh等方式上传至ubuntu18虚拟机家目录下，执行解压。
+
+注意：不要直接在 vmware的共享文件夹进行解压缩,会导致解压报错。
+
+注意：不要直接在 vmware的共享文件夹进行解压缩,会导致解压报错。
+
+注意：不要直接在 vmware的共享文件夹进行解压缩,会导致解压报错。
+
+解压命令：
+
+``` bash
+ cat tina-v853-open.tar.gz.0* | tar xzv
+```
+
+解压完后会显示一个名为 tina-v853-open 文件夹。
