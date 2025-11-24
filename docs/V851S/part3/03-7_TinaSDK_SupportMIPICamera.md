@@ -3,6 +3,7 @@ sidebar_position: 7
 ---
 # 支持MIPI摄像头
 
+
 使用Tina-SDK生成的镜像已经默认装载了GC2053的MIPI摄像头驱动，可以通过如下命令查看
 
 ```
@@ -19,7 +20,17 @@ xradio_wlan              598  0
 xradio_core           430533  1 xradio_wlan
 xradio_mac            221572  1 xradio_core
 ```
-
+假如系统没有自动安装摄像头驱动模块则需要手动安装摄像头驱动模块，注意，需要严格按照如下顺序进行安装。
+``` bash
+root@TinaLinux:/# cd /lib/modules/4.9.191
+root@TinaLinux:/lib/modules/4.9.191# insmod videobuf2-core.ko
+root@TinaLinux:/lib/modules/4.9.191# insmod videobuf2-memops.ko
+root@TinaLinux:/lib/modules/4.9.191# insmod videobuf2-dma-contig.ko
+root@TinaLinux:/lib/modules/4.9.191# insmod videobuf2-v4l2.ko
+root@TinaLinux:/lib/modules/4.9.191# insmod vin_io.ko
+root@TinaLinux:/lib/modules/4.9.191# insmod gc2053_mipi.ko
+root@TinaLinux:/lib/modules/4.9.191# insmod vin_v4l2.ko
+```
 
 
 **断电**后，如下图所示将GC2053的MIPI摄像头连接到开发板上。注意一定需要断电后才能连接，否则会将摄像头烧坏。
