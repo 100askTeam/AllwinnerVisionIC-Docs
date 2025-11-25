@@ -7,17 +7,17 @@ sidebar_position: 2
 
 - V851s芯片Brief: 
 
-    https://github.com/YuzukiHD/Yuzukilizard/blob/master/Hardware/Datasheets/V851S_Brief_EN_V1.0.pdf
+    https://gitee.com/GloomyGhost/Yuzukilizard/tree/master
 
 - V851s数据手册: 
 
-    https://github.com/YuzukiHD/Yuzukilizard/blob/master/Hardware/Datasheets/V851S%26V851SE_Datasheet_V1.0.pdf
+    https://gitee.com/GloomyGhost/Yuzukilizard/tree/master
 
 ### 开发板硬件资源
 
 - 原理图资源:
 
-    https://github.com/YuzukiHD/Yuzukilizard/blob/master/Hardware/Schematic/SCH_Schematic1_2022-11-23.pdf
+    https://gitee.com/GloomyGhost/Yuzukilizard/tree/master/Hardware/Schematic
     
 - 开发板尺寸图：
 
