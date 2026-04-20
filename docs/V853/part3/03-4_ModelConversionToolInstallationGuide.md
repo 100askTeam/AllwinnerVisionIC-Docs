@@ -27,7 +27,8 @@ V853 支持的常用深度学习框架模型有：
 
 下载地址：https://netstorage.allwinnertech.com:5001/sharing/ZIruS49kj
 
-模型仿真工具使用指南：
+如果无法下载可前往资料网盘中: 02_开发工具/【Linux】NPU拓展包 中获取
+
 
 
 
