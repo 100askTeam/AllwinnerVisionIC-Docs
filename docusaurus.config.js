@@ -109,6 +109,12 @@ const config = {
             label: 'V821-AvaotaF1',
           },
           {
+            type: 'docSidebar',
+            sidebarId: 'v861AvaotaF2Sidebar',
+            position: 'left',
+            label: 'v861-AvaotaF2',
+          },
+          {
             type: 'localeDropdown',
             position: 'right',
           },
