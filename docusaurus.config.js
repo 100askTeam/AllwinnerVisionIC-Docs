@@ -112,7 +112,7 @@ const config = {
             type: 'docSidebar',
             sidebarId: 'v861AvaotaF2Sidebar',
             position: 'left',
-            label: 'v861-AvaotaF2',
+            label: 'V861-AvaotaF2',
           },
           {
             type: 'localeDropdown',

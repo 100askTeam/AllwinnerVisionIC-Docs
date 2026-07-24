@@ -1,0 +1,393 @@
+---
+sidebar_position: 2
+---
+
+# 双目常电 RTSP IPC 应用
+
+本文将以 V861 BGA\_PERF1 板为示例，搭配gc2083摄像头，演示搭建双目 Smart IPC 场景功能，包括：
+
+| 项目                         | 双目 2M 场景           | 双目 2M 合并一路场景（上下拼接） |
+| --- | --- | --- |
+| 摄像头                     | GC2083 + GC2083         | GC2083 + GC2083                   |
+| 编码方式                    | 在线编码               | 在线编码                         |
+| 主码流                     | H.264，1920x1080@15fps | H.264，1920x2160@15fps           |
+| 子码流                     | H.264，640x480@15fps   | H.264，640x480@15fps             |
+| SD卡                        | 录像 + 写卡 + 读卡     | 录像 + 写卡 + 读卡               |
+| WiFi RTSP 主码流图传     | √                       | √                                 |
+| 抓拍（JPEG编码）         | √                       | √                                 |
+| 人形检测 + 主码流图传画框 | √                       | √                                 |
+| 音频                     | 录制+播放               | 录制+播放                         |
+
+## 硬件准备
+
+### 双目 2M 硬件
+
+V861 BGA\_Perf1 板 + 双目 GC2083 实物图如下：
+
+![](images/4a465322e9504997bace5f4ec10c01c87351-7031a96ccbe53745db13f78720907cb2.png)
+
+连接示意图如下：
+
+![](images/1ccfd3fa91024a13a633fb6e7cbd318a2776-57d0a97777c9355c496cda0aede4037e.png)
+
+需要注意的是双目 GC2083 的sensor0（sensor A） 和sensor1（sensor B） 位置是固定的，不能对换。
+
+![](images/9a77acf3722044fba7a65094eda006f68824-4bc745c35d7dd2d96d898b2c18d68afc.png)
+
+其中sensor0（sensor A） 和sensor1（sensor B）子板的差异如下：
+
+![](images/9f67c4bdfea84c87985d204b094d13bd7327-1f75ce10a87c505cd5348ebdad8211a3.png)
+
+## 应用勾选
+
+常电 IPC 场景使用的应用是 sample smartIPC\_demo，运行 `m menuconfig` 然后勾选如下选项
+
+```
+Allwinner  --->
+    eyesee-mpp  --->
+        [*]   select mpp sample
+        [*]   mpp sample smartIPC_demo
+```
+
+打开`Allwinner`
+
+![](images/949a5315fced4506a247827d226da7568196-da7a45ba04fff2b3b38a8a3fbd7c3a98.png)
+
+打开`eyesee-mpp`
+
+![](images/20518bf5099b40f39101d73b305995ce9702-4a81013397b63e8fb5f9426a835b77c4.png)
+
+`Y`勾选`select mpp sample`
+
+![](images/fed6da7318454b1ebf6a2050a91e01089445-468cb379f6238f1aed0920d08fdd28f6.png)
+
+`Y`勾选`mpp sample smartIPC_demo`
+
+![](images/03d94673850a4960be67e6917f0c2e482444-eb2bd5982c13113eb43fe36ab99e9728.png)
+
+随后即可编译打包
+
+```bash
+mp -j32
+```
+
+编译后的可执行文件会存放在 `platform/allwinner/eyesee-mpp/middleware/sun252iw1/sample/bin` 文件夹中
+
+![](images/8cfd9b5a23b2406884b7372bce844f189867-cbc58d1761fe12945164ffd0283ba343.png)
+
+在这个目录找到人形检测模型，与可执行文件一起复制进sd卡中
+
+![](images/43b791444f5e4622ab7101ef7a9b66728514-88b5c0ba6ed80be8ac18a2570a3d2786.png)
+
+将 Sample 复制到 TF 卡中，同时准备一个测试音频 `test.wav` 也放进 TF卡中。接入 V861 开发板使用。V861 在每次启动时都会尝试挂载 TF 卡到 `/mnt/extsd` 目录下。目前 SDK 未配置自动挂载功能。如果是启动后插入 TF 卡，需要手动挂载。
+
+![](data:image/png;base64,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)
+
+```
+mount /dev/mmcblk0p1 /mnt/extsd
+```
+
+系统启动后可以用 `mount` 命令查看挂载情况
+
+![](images/3f645188128f4b18818479bff03fdb319573-c254388e0c787007a693ceb9c2de0bc3.png)
+
+### 修改配置参数
+
+在默认的 `sample_smartIPC_demo.conf` 基础上，修改如下参数：
+
+```
+
+region_link_enable = 0  
+region_link_tex_detect_enable = 0  
+region_link_motion_detect_enable = 0  
+  
+audio_test_enable = 1  
+motionAlarm_on = 1  
+  
+main_rtsp_id = 0  
+main_isp_algo_freq = 5  
+main_src_width = 1920  
+main_src_height = 1080  
+main_src_frame_rate = 15  
+main_encode_width = 1920  
+main_encode_height = 1080  
+main_encode_frame_rate = 15  
+main_online_en = 1  
+main_online_share_buf_num = 1  
+main_2nd_enable = 1  
+main_2nd_src_width = 640  
+main_2nd_src_height = 480  
+main_2nd_src_frame_rate = 15  
+main_2nd_encode_width = 640  
+main_2nd_encode_height = 480  
+main_2nd_encode_frame_rate = 15  
+main_2nd_take_picture = 1  
+  
+sub_enable = 1  
+sub_rtsp_id = 1  
+sub_isp_algo_freq = 5  
+sub_src_width = 1920  
+sub_src_height = 1080  
+sub_src_frame_rate = 15  
+sub_encode_width = 1920  
+sub_encode_height = 1080  
+sub_encode_frame_rate = 15  
+sub_online_en = 1  
+sub_online_share_buf_num = 1  
+sub_2nd_enable = 1  
+sub_2nd_src_width = 640  
+sub_2nd_src_height = 480  
+sub_2nd_src_frame_rate = 15  
+sub_2nd_encode_width = 640  
+sub_2nd_encode_height = 480  
+sub_2nd_encode_frame_rate = 15  
+sub_2nd_take_picture = 1
+
+main_3rd_enable = 1
+main_3rd_src_width = 352
+main_3rd_src_height = 224
+main_3rd_src_frame_rate = 15
+
+sub_3rd_enable = 1
+sub_3rd_src_width = 352
+sub_3rd_src_height = 224
+sub_3rd_src_frame_rate = 15
+```
+
+### 连接网络
+
+使用命令扫描  WIFI 网络
+
+```
+wifi -s
+```
+
+找到需要连接的 WIFI 网络后，使用命令连接
+
+```
+wifi -c <SSID> <PASSWORD>
+```
+
+连接成功
+
+![](data:image/png;base64,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)
+
+### 运行 Sample
+
+## 双目 2M 场景
+
+### 选择双目 GC2083 摄像头
+
+运行 `quick_config` 选择双目 GC2083 摄像头配置，运行即可
+
+![](images/71344f81ea1d4dbeb8b7de3a93d826065680-bd7abe3ed87d24fb218e1a7c8bf90c32.png)
+
+### 修改配置参数
+
+在默认的 `sample_smartIPC_demo.conf` 基础上，修改如下参数，也可以运行 `sample_smartIPC_demo-dual-rtsp.conf` 配置：
+
+```
+
+region_link_enable = 0  
+region_link_tex_detect_enable = 0  
+region_link_motion_detect_enable = 0  
+  
+audio_test_enable = 1  
+motionAlarm_on = 1  
+  
+main_rtsp_id = 0  
+main_isp_algo_freq = 5  
+main_src_width = 1920  
+main_src_height = 1080  
+main_src_frame_rate = 15  
+main_encode_width = 1920  
+main_encode_height = 1080  
+main_encode_frame_rate = 15  
+main_online_en = 1  
+main_online_share_buf_num = 1  
+main_2nd_enable = 1  
+main_2nd_src_width = 640  
+main_2nd_src_height = 480  
+main_2nd_src_frame_rate = 15  
+main_2nd_encode_width = 640  
+main_2nd_encode_height = 480  
+main_2nd_encode_frame_rate = 15  
+main_2nd_take_picture = 1  
+  
+sub_enable = 1  
+sub_rtsp_id = 1  
+sub_isp_algo_freq = 5  
+sub_src_width = 1920  
+sub_src_height = 1080  
+sub_src_frame_rate = 15  
+sub_encode_width = 1920  
+sub_encode_height = 1080  
+sub_encode_frame_rate = 15  
+sub_online_en = 1  
+sub_online_share_buf_num = 1  
+sub_2nd_enable = 1  
+sub_2nd_src_width = 640  
+sub_2nd_src_height = 480  
+sub_2nd_src_frame_rate = 15  
+sub_2nd_encode_width = 640  
+sub_2nd_encode_height = 480  
+sub_2nd_encode_frame_rate = 15  
+sub_2nd_take_picture = 1
+
+main_3rd_enable = 1
+main_3rd_src_width = 352
+main_3rd_src_height = 224
+main_3rd_src_frame_rate = 15
+
+sub_3rd_enable = 1
+sub_3rd_src_width = 352
+sub_3rd_src_height = 224
+sub_3rd_src_frame_rate = 15
+```
+
+### 连接网络
+
+使用命令扫描  WIFI 网络
+
+```
+wifi -s
+```
+
+找到需要连接的 WIFI 网络后，使用命令连接
+
+```
+wifi -c <SSID> <PASSWORD>
+```
+
+连接成功后
+
+![](data:image/png;base64,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)
+
+### 运行 Sample
+
+执行命令
+
+```
+/mnt/extsd/sample_smartIPC_demo -path /mnt/extsd/sample_smartIPC_demo.conf
+```
+
+此时可以从喇叭中听到播放的音频，打开 VLC，输入开发板的地址，即可拉流查看，若出现人形则人形画框
+
+-   通道 0 的 RTSP 地址
+
+![](images/72e4d964590b46528dd670003f36fa927453-2fd94c85d0b018544a1872c9f23a45e1.png)
+
+-   通道 1 的 RTSP 地址
+
+![](images/0413ea89d1b44345a370d392b9ecc86d6047-301410add3dc57f5301a0529054e5fa1.png)
+
+使用 VLC 即可打开查看码流（摄像头画面颜色不同是镜头差异）
+
+![](images/7c5408be4df44418a7f67e339efa2bde7357-e60202233ba732dc829ae681936b117b.png)
+
+## 双目 2M 合并一路场景（上下拼接）
+
+### 选择双目 GC2083 拼接摄像头
+
+运行 `quick_config` 选择双目 GC2083 摄像头配置，运行即可(与非合并一样)
+
+![](images/71344f81ea1d4dbeb8b7de3a93d826065680-bd7abe3ed87d24fb218e1a7c8bf90c32.png)
+
+### 修改配置参数
+
+在默认的 `sample_smartIPC_demo.conf` 基础上，修改如下参数：
+
+```
+region_link_enable = 0  
+region_link_tex_detect_enable = 0  
+region_link_motion_detect_enable = 0  
+  
+audio_test_enable = 1  
+motionAlarm_on = 1  
+  
+main_rtsp_id = 0
+main_isp = 1
+
+main_vipp = 1
+
+main_isp_algo_freq = 5  
+main_src_width = 1920  
+main_src_height = 2160
+main_pixel_format = "yu12"
+main_src_frame_rate = 15
+main_vi_stitch_mode = 3
+main_encode_width = 1920  
+main_encode_height = 2160  
+main_encode_frame_rate = 15  
+main_online_en = 1  
+main_online_share_buf_num = 1  
+main_2nd_enable = 1  
+main_2nd_src_width = 640  
+main_2nd_src_height = 480
+main_2nd_pixel_format = "yu12"
+main_2nd_src_frame_rate = 15  
+main_2nd_venc_chn = 2
+main_2nd_encode_width = 640  
+main_2nd_encode_height = 480  
+main_2nd_encode_frame_rate = 15  
+main_2nd_take_picture = 1  
+  
+sub_enable = 0  
+sub_rtsp_id = 1  
+sub_isp_algo_freq = 5  
+sub_src_width = 1920  
+sub_src_height = 1080  
+sub_src_frame_rate = 15  
+sub_encode_width = 1920  
+sub_encode_height = 1080  
+sub_encode_frame_rate = 15  
+sub_online_en = 1  
+sub_online_share_buf_num = 1  
+sub_2nd_enable = 0  
+sub_2nd_src_width = 640  
+sub_2nd_src_height = 480
+sub_2nd_pixel_format = "yu12"
+sub_2nd_src_frame_rate = 15  
+sub_2nd_encode_width = 640  
+sub_2nd_encode_height = 480  
+sub_2nd_encode_frame_rate = 15  
+sub_2nd_take_picture = 0
+
+main_3rd_enable = 1
+main_3rd_src_width = 352
+main_3rd_src_height = 224
+main_3rd_src_frame_rate = 15
+
+sub_3rd_enable = 0
+sub_3rd_src_width = 352
+sub_3rd_src_height = 224
+sub_3rd_src_frame_rate = 15
+```
+
+### 连接网络
+
+使用命令扫描  WIFI 网络
+
+```
+wifi -s
+```
+
+找到需要连接的 WIFI 网络后，使用命令连接
+
+```
+wifi -c <SSID> <PASSWORD>
+```
+
+连接成功
+
+![](data:image/png;base64,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)
+
+### 运行 Sample
+
+执行命令
+
+```
+/mnt/extsd/sample_smartIPC_demo -path /mnt/extsd/sample_smartIPC_demo.conf
+```
+
+此时可以从喇叭中听到播放的音频，打开 VLC，输入开发板的地址，即可拉流查看，若出现人形则人形画框
